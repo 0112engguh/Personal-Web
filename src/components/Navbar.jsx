@@ -1,87 +1,56 @@
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { House, FolderGit, MailOpen } from "lucide-react";
+import { ThemeToggle } from "../components/ThemeToggle";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: <House />, href: "#home", label: "Home" },
+  { name: <FolderGit />, href: "#projects", label: "Projects" },
+  { name: <MailOpen />, href: "#contact", label: "Contact" },
+  { name: <ThemeToggle />, href: "#", label: "Toggle Theme" },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
-    <nav
-      className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
-      )}
-    >
-      <div className="container flex items-center justify-between">
-        <a
-          className="text-xl font-bold text-primary flex items-center"
-          href="#hero"
-        >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> Bagus </span>{" "}
-            Portfolio
-          </span>
-        </a>
-
-        {/* desktop nav */}
-        <div className="hidden md:flex space-x-8">
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div
+        className={cn(
+          "px-6 py-3 rounded-full flex items-center justify-between shadow-md transition-all duration-300 backdrop-blur-xl bg-zinc-900/80 text-foreground",
+          isScrolled ? "shadow-lg scale-100" : "scale-100"
+        )}
+      >
+        {/* Nav - visible on all screens */}
+        <div className="flex space-x-6 text-sm font-medium">
           {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
-        </button>
-
-        <div
-          className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          )}
-        >
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
+            <div key={key} className="relative group">
               <a
-                key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
+                className="text-zinc-300 hover:text-white transition-colors duration-200"
+                aria-label={item.label}
               >
                 {item.name}
               </a>
-            ))}
-          </div>
+              {/* Tooltip */}
+              <div
+                className="absolute top-12 left-1/2 -translate-x-1/2 
+                px-2 py-1 rounded bg-background text-sm text-foreground shadow-md
+                opacity-0 group-hover:opacity-100 transition-all duration-200
+                pointer-events-none whitespace-nowrap z-50"
+              >
+                {item.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </nav>
