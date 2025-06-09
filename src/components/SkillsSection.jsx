@@ -10,7 +10,6 @@ import FigmaOriginal from 'devicons-react/icons/FigmaOriginal';
 import MysqlOriginalWordmark from 'devicons-react/icons/MysqlOriginalWordmark';
 
 
-
 const skills = [
   // Frontend
   { name: "HTML", icon: <Html5Plain/>, category: "frontend" },
@@ -18,7 +17,6 @@ const skills = [
   { name: "JavaScript", icon: <JavascriptOriginal/>, category: "frontend" },
   { name: "React", icon: <ReactOriginal/>, category: "frontend" },
   { name: "Tailwind CSS", icon: <TailwindcssOriginal/>, category: "frontend" },
-
   // Backend
   { name: "PHP", icon: <PhpPlain/>, category: "backend" },
   { name: "Laravel", icon: <LaravelOriginal/>, category: "backend" },
@@ -33,7 +31,7 @@ export const SkillsSection = () => {
     return (
         <section id="skills" className="pt-0 px-4 relative bg-secondary/30">
             <div className="container mx-auto max-w-3xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-start">
+                <h2 className="text-2xl md:text-2xl font-semibold mb-12 text-start">
                     Tech Stack
                 </h2>
 
@@ -41,8 +39,8 @@ export const SkillsSection = () => {
                     {skills.map((skill, key) =>(
                         <div key={key} className="bg-card p-6 rounded-lg shadow-xs card-hover">
                             <div className="flex flex-row justify-center">
-                                <span className="me-4 mt-2 font-semibold text-lg">{skill.icon}</span>
-                                <h3 className='font-semibold text-lg'>{skill.name}</h3>
+                                <span className="me-4 mt-1 font-semibold text-lg icon-bw">{skill.icon}</span>
+                                <h3 className='font-semibold text-base italic'>{skill.name}</h3>
                             </div>
                         </div>
                     ))}

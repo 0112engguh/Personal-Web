@@ -8,7 +8,7 @@ const projects = [
         image: "/projects/Login.png",
         tags: ["Laravel", "Bootstrap"],
         demoUrl: "#",
-        githubUrl: "https://github.com/0112engguh/Personal-Web",
+        githubUrl: "https://github.com/0112engguh/Web-Pengaduan-Laporan-Masyarakt-PENMAS",
     },
     {
         id: 2,
@@ -17,21 +17,21 @@ const projects = [
         image: "/projects/personalWeb.PNG",
         tags: ["React", "Tailwind"],
         demoUrl: "#",
-        githubUrl: "https://github.com/0112engguh/Web-Pengaduan-Laporan-Masyarakt-PENMAS",
+        githubUrl: "https://github.com/0112engguh/Personal-Web.git",
     }
 ]
 
 export const ProjectsSection = () => {
     return (
-        <section id="projects" className="pt-0 pb-10 px-4 relative ">
+        <section id="projects" className="pt-0 pb-8 px-4 relative ">
             <div className="container mx-auto max-w-3xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-start">
+                <h2 className="text-2xl md:text-2xl font-semibold mb-12 text-start">
                     Projects
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6">
                     {projects.map((project, key)=>(
-                        <div key={key} className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover">
+                        <div key={key} className="group bg-card border rounded-lg overflow-hidden shadow-xs card-hover">
                             <div className="h-48 overflow-hidden">
                                 <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
                             </div>
@@ -73,16 +73,6 @@ export const ProjectsSection = () => {
                             </div>
                         </div>
                     ))}
-                </div>
-
-                <div className="text-center mt-12">
-                    <a
-                        className="cosmic-button w-fit flex items-center mx-auto gap-2"
-                        target="_blank"
-                        href="https://github.com/0112engguh"
-                    >
-                        Check My Github <ArrowRight size={16} />
-                    </a>
                 </div>
             </div>
         </section>

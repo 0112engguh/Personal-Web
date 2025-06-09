@@ -4,10 +4,10 @@ import { ThemeToggle } from "../components/ThemeToggle";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: <House />, href: "#home", label: "Home" },
+  { name: <House />, href: "#hero", label: "Home" },
   { name: <FolderGit />, href: "#projects", label: "Projects" },
   { name: <MailOpen />, href: "#contact", label: "Contact" },
-  { name: <ThemeToggle />, href: "#", label: "Toggle Theme" },
+  { name: <ThemeToggle />, href: "#" },
 ];
 
 export const Navbar = () => {
@@ -29,7 +29,6 @@ export const Navbar = () => {
           isScrolled ? "shadow-lg scale-100" : "scale-100"
         )}
       >
-        {/* Nav - visible on all screens */}
         <div className="flex space-x-6 text-sm font-medium">
           {navItems.map((item, key) => (
             <div key={key} className="relative group">
@@ -40,7 +39,6 @@ export const Navbar = () => {
               >
                 {item.name}
               </a>
-              {/* Tooltip */}
               <div
                 className="absolute top-12 left-1/2 -translate-x-1/2 
                 px-2 py-1 rounded bg-background text-sm text-foreground shadow-md
